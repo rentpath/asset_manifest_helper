@@ -1,0 +1,6 @@
+{
+  "main": {
+    "js": "/assets/main-bundle.js",
+    "css": "/assets/main-bundle.css"
+  }
+}
