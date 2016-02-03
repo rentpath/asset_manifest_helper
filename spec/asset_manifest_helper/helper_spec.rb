@@ -48,4 +48,10 @@ describe AssetManifestHelper do
       end
     end
   end
+
+  describe '#asset_root_url' do
+    it 'returns url based on configured protocol and domain' do
+        expect(AssetManifestHelper.asset_root_url).to eql('http://example.com')
+    end
+  end
 end
