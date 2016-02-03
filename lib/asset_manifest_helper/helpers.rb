@@ -12,20 +12,24 @@ module AssetManifestHelper
   end
 
   def asset_path(asset)
-    configuration.asset_manifest.fetch(asset, asset)
+    AssetManifestHelper.configuration.asset_manifest.fetch(asset, asset)
   end
 
   def style_path(bundle)
-    configuration.bundle_manifest.fetch(bundle, {})['css']
+    AssetManifestHelper.configuration.bundle_manifest.fetch(bundle, {})['css']
   end
 
   def script_path(bundle)
-    configuration.bundle_manifest.fetch(bundle, {})['js']
+    AssetManifestHelper.configuration.bundle_manifest.fetch(bundle, {})['js']
   end
 
   def url_for_path(path)
     return nil unless path
     separator = path.start_with?('/') ? '' : '/'
-    "#{configuration.protocol}://#{configuration.domain}#{separator}#{path}"
+    "#{asset_root_url}#{separator}#{path}"
+  end
+
+  def asset_root_url
+    "#{AssetManifestHelper.configuration.protocol}://#{AssetManifestHelper.configuration.domain}"
   end
 end
