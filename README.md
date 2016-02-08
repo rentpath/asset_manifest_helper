@@ -11,7 +11,7 @@ require 'asset_manifest_helper'
 ### Configuration:
 ```ruby
 AssetManifestHelper.configure do |config|
-  # Set paths to JSON manifest files.
+  # Set paths to JSON manifest files. Defaults are in 'public/assets/'
   config.asset_file = 'path/to/webpack-assets.json'
   config.bundle_file = 'path/to/webpack-bundles.json'
 
@@ -26,20 +26,41 @@ end
 ```
 
 ### Helper methods:
+All of the helper methods are accessed through a single method `#manifest`.
+It acts as a sort of namespace.
+
 ```ruby
-asset_url(asset)
+manifest.asset_url(asset)
 ```
 Given an asset name (such as an image filename) returns the full url to the asset.
 If no match in the manifest, returns full url in which the asset name is treated as the path.
 
 ```ruby
-style_url(bundle)
+manifest.style_url(bundle)
 ```
 Given a bundle name (such as "main") returns the full url to the CSS bundle.
 If no match in the manifest, returns `nil`.
 
 ```ruby
-script_url(bundle)
+manifest.script_url(bundle)
 ```
 Given a bundle name (such as "main") returns the full url to the Javascript bundle.
+If no match in the manifest, returns `nil`.
+
+```ruby
+manifest.asset_path(asset)
+```
+Given an asset name (such as an image filename) returns the path to the asset from the manifest file.
+If no match in the manifest, returns `asset`.
+
+```ruby
+manifest.style_path(bundle)
+```
+Given a bundle name (such as "main") returns the path to the CSS bundle.
+If no match in the manifest, returns `nil`.
+
+```ruby
+manifest.script_path(bundle)
+```
+Given a bundle name (such as "main") returns the path to the Javascript bundle.
 If no match in the manifest, returns `nil`.
