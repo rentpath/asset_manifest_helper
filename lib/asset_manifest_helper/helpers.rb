@@ -2,6 +2,7 @@ module AssetManifestHelper
   def manifest
     @manifest ||= Manifest.new
   end
+  module_function :manifest
 
   class Manifest
     def asset_url(asset)
