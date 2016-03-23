@@ -10,6 +10,12 @@ describe AssetManifestHelper do
     end
   end
 
+  describe '#manifest' do
+    it 'is included as a module function' do
+      expect(AssetManifestHelper.manifest.class).to eql(manifest.class)
+    end
+  end
+
   describe '#manifest.asset_url' do
     context 'asset in manifest' do
       it 'returns url based on path from manifest' do
