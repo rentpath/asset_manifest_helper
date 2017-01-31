@@ -36,7 +36,13 @@ module AssetManifestHelper
     end
 
     def asset_root_url
-      "#{configuration.protocol}://#{configuration.domain}"
+      "#{asset_protocol}//#{configuration.domain}"
+    end
+
+    def asset_protocol
+      if configuration.protocol
+       "#{configuration.protocol}:"
+      end
     end
 
     def configuration
